@@ -8,7 +8,7 @@
 
 # Pinout
 
-<a href="#"><img src="resources/Cargador.jpg" width="500px"><br/> Pinout</a>
+<a href="#"><img src="resources/charger_pinout.jpg" width="500px"><br/> Pinout</a>
 
 | Component         | PCB Label   | Description                                         |
 |-------------------|-----------  |---------------------------------------------------  |

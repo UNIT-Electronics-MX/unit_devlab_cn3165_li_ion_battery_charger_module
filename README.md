@@ -23,6 +23,6 @@ The USB-C receptacle accepts **5 V** from any compliant source (PC port, charger
 A **reverse-current diode** prevents the battery from discharging back into the USB source when it is removed or turned off.
 
 
-<a href="#"><img src="hardware/resources/UE0089-Cargador de baterías CN3165 v3.jpg" width="500px"><br/> UNIT PWM Module</a>
+<a href="#"><img src="hardware/resources/charger_module.jpg" width="500px"><br/> UNIT PWM Module</a>
 
 
