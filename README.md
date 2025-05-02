@@ -5,7 +5,7 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 * **Battery In:** for charging the battery safely.
 * **Battery Out:** for delivering battery voltage to a load even while the battery is charging.
 
-<a href="#"><img src="hardware/resources/charger_module.jpg" width="500px"><br/> UNIT PWM Module</a>
+<a href="#"><img src="hardware/resources/charger_module.jpg" width="500px"><br/> UNIT charger module</a>
 
 ## Description 
 
