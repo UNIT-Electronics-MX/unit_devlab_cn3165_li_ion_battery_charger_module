@@ -1,28 +1,36 @@
-# UNIT PWM Module
+# unit cn3165 battery charger module
 
-This compact PCB functions as a single-cell Li-Ion battery charger and power‐out module, ideal for USB-powered applications that require both safe battery charging and convenient access to battery voltage. A USB-C port delivers up to 5 V to an on-board charger IC, which manages charging at **user-selectable** currents of **250 mA, 750 mA or 1 A**. The module exposes two sets of screw-terminal outputs:
+This compact printed circuit board is designed to serve as a single-cell Li-Ion battery charger and power-out module. Its USB-C interface provides 5 V from any compliant source, powering an on-board charger IC that supports charging currents of 250 mA, 750 mA, or 1 A. Two sets of screw-terminal outputs are available:
 
-* **Battery In:** connects to the battery’s terminals for charging.
-
-* **Battery Out:** provides the battery voltage to an external load even while charging. 
-
---- 
-
-# Description 
-
-### Power Input (USB-C)
-
-The USB-C receptacle accepts **5 V** from any compliant source (PC port, charger brick, power bank).
-
-
-
-### Safety & Protections
-
-**Over-voltage**, **over-current**, and thermal shutdown features are integrated in the charger IC.
-
-A **reverse-current diode** prevents the battery from discharging back into the USB source when it is removed or turned off.
-
+* **Battery In:** for charging the battery safely.
+* **Battery Out:** for delivering battery voltage to a load even while the battery is charging.
 
 <a href="#"><img src="hardware/resources/charger_module.jpg" width="500px"><br/> UNIT PWM Module</a>
 
+## Description 
 
+### USB Power Input
+
+The USB-C port accepts a 5 V supply from PCs, charger bricks, or power banks.
+
+### Safety Features
+
+Integrated safety measures include over-voltage, over-current, and thermal shutdown protections. Additionally, a reverse-current diode prevents the battery from discharging back into the USB source when disconnected or inactive.
+
+
+
+<a href="#"><img src="resources/Schematics_icon.jpg?raw=false" width="500px"><br/> Schematics</a>
+
+
+
+# Pinout
+
+<a href="#"><img src="resources/charger_pinout.jpg" width="500px"><br/> Pinout</a>
+
+| Component         | PCB Label   | Description                                         |
+|-------------------|-----------  |---------------------------------------------------  |
+| USB-C Connector   | USB IN      | 5 V power input from USB-C source                   |
+| Connector         | Battery IN  | Screw terminals for connecting the Li-ion cell      |
+| Connector         | Battery Out | Screw terminals for outputting battery voltage      |
+| CHRG LED          | CHRG        | Indicator LED: on during the charging phase         |
+| DONE LED          | DONE        | Indicator LED: on when the charging cycle completes |
