@@ -18,14 +18,9 @@ The USB-C port accepts a 5 V supply from PCs, charger bricks, or power banks.
 Integrated safety measures include over-voltage, over-current, and thermal shutdown protections. Additionally, a reverse-current diode prevents the battery from discharging back into the USB source when disconnected or inactive.
 
 
-
-<a href="#"><img src="resources/Schematics_icon.jpg?raw=false" width="500px"><br/> Schematics</a>
-
-
-
 # Pinout
 
-<a href="#"><img src="resources/charger_pinout.jpg" width="500px"><br/> Pinout</a>
+<a href="#"><img src="hardware/resources/charger_pinout.jpg" width="500px"><br/> Pinout</a>
 
 | Component         | PCB Label   | Description                                         |
 |-------------------|-----------  |---------------------------------------------------  |
