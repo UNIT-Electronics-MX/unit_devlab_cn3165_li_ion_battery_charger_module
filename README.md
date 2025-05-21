@@ -28,6 +28,8 @@ Integrated safety measures include over-voltage, over-current, and thermal shutd
 
 </div>
 
+---
+
 <div align="center">
 
 | Component         | PCB Label   | Description                                        |
