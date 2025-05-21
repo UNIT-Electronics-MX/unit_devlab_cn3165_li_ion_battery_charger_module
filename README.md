@@ -6,7 +6,7 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 * **Battery Out:** for delivering battery voltage to a load even while the battery is charging.
 
 <div align="center">
-<a href="#"><img src="hardware/resources/top.png" width="500px"><br/> UNIT charger module</a>
+<a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/top.png" width="500px"><br/> UNIT charger module</a>
 </div>
 
 ## Description 
@@ -21,13 +21,23 @@ Integrated safety measures include over-voltage, over-current, and thermal shutd
 
 
 # Pinout
+<div align="center">
+    <a href="#"><img src="hardware/resources/charger_pinout.jpg" width="500px"><br/>Pinout</a>
+</div>
 
-<a href="#"><img src="hardware/resources/charger_pinout.jpg" width="500px"><br/> Pinout</a>
-
-| Component         | PCB Label   | Description                                         |
-|-------------------|-----------  |---------------------------------------------------  |
-| USB-C Connector   | USB IN      | 5 V power input from USB-C source                   |
-| Connector         | Battery IN  | Screw terminals for connecting the Li-ion cell      |
+| Component         | PCB Label   | Description                                        |
+|-------------------|-------------|----------------------------------------------------|
+| USB-C Connector   | USB IN      | 5 V power input from USB-C source                  |
+| Connector         | Battery IN  | Screw terminals for connecting the Li-ion cell     |
 | Connector         | Battery Out | Screw terminals for outputting battery voltage      |
 | CHRG LED          | CHRG        | Indicator LED: on during the charging phase         |
 | DONE LED          | DONE        | Indicator LED: on when the charging cycle completes |
+
+
+# License MIT 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+# Resources
+
+- [schematic](./hardware/UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf)
+- [Product brief](./cn3165_battery_charger_module.pdf)
