@@ -23,15 +23,17 @@ Integrated safety measures include over-voltage, over-current, and thermal shutd
 # Pinout
 <div align="center">
     <a href="#"><img src="hardware/resources/charger_pinout.jpg" width="500px"><br/>Pinout</a>
-</div>
+<div align="center">
 
 | Component         | PCB Label   | Description                                        |
 |-------------------|-------------|----------------------------------------------------|
 | USB-C Connector   | USB IN      | 5 V power input from USB-C source                  |
 | Connector         | Battery IN  | Screw terminals for connecting the Li-ion cell     |
-| Connector         | Battery Out | Screw terminals for outputting battery voltage      |
-| CHRG LED          | CHRG        | Indicator LED: on during the charging phase         |
-| DONE LED          | DONE        | Indicator LED: on when the charging cycle completes |
+| Connector         | Battery Out | Screw terminals for outputting battery voltage     |
+| CHRG LED          | CHRG        | Indicator LED: on during the charging phase        |
+| DONE LED          | DONE        | Indicator LED: on when the charging cycle completes|
+
+</div>
 
 
 # License MIT 
