@@ -23,6 +23,10 @@ Integrated safety measures include over-voltage, over-current, and thermal shutd
 # Pinout
 <div align="center">
     <a href="#"><img src="hardware/resources/charger_pinout.jpg" width="500px"><br/>Pinout</a>
+
+
+</div>
+
 <div align="center">
 
 | Component         | PCB Label   | Description                                        |
