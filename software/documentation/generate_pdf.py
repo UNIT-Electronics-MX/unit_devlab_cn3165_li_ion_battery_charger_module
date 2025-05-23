@@ -37,15 +37,21 @@ def markdown_table_to_latex(md_table):
 def markdown_links_to_latex_list(text):
     items = re.findall(r'- \[(.*?)\]\((.*?)\)', text)
     if not items:
-        return text.strip()
+        return ""  # <- evita entorno vacío
     return "\\begin{itemize}\n" + "\n".join([f"\\item \\href{{{url}}}{{{label}}}" for label, url in items]) + "\n\\end{itemize}"
+
 
 def markdown_bullets_to_latex(text):
     lines = text.strip().splitlines()
-    items = [line.strip()[2:].strip() for line in lines if line.strip().startswith('-')]
+    items = [
+        line.strip()[2:].strip()
+        for line in lines
+        if line.strip().startswith('-') and len(line.strip()[2:].strip()) > 0
+    ]
     if not items:
-        return text
+        return ""
     return "\\begin{itemize}\n" + "\n".join([f"\\item {item}" for item in items]) + "\n\\end{itemize}"
+
 
 def fix_paragraphs(text):
     return text.replace('\n\n', '\n\n\\par\n\n')
@@ -83,7 +89,7 @@ def format_images_with_titles(content):
             f"\\section*{{{title}}}\n"
             "\\vspace{1em}\n"
             "\\begin{center}\n"
-            f"\\includegraphics[width=0.95\\textwidth,keepaspectratio]{{{path}}}\n"
+            f"\\includegraphics[width=0.75\\textwidth,keepaspectratio]{{{path}}}\n"
             "\\end{center}\n"
         )
     return code
@@ -158,7 +164,19 @@ def render_latex(template_path, output_path, replacements):
         f.write(tex)
 
 def compile_pdf(tex_file):
-    subprocess.run(['pdflatex', '-interaction=nonstopmode', f'-output-directory=build', tex_file], check=True)
+    try:
+        # Ejecutar pdflatex 2 veces para referencias y lastpage
+        for _ in range(2):
+            subprocess.run(
+                ['pdflatex', '-interaction=nonstopmode', '-output-directory=build', tex_file],
+                check=True
+            )
+    except subprocess.CalledProcessError as e:
+        print(f"LaTeX compilation failed with exit code {e.returncode}")
+        with open("build/" + os.path.splitext(os.path.basename(tex_file))[0] + ".log") as log:
+            print(log.read())
+        raise
+
 
 
 def clean_aux_files(output_name):
