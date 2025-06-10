@@ -1,12 +1,14 @@
 # CN3165 Battery Charger Module
 
-This compact printed circuit board is designed to serve as a single-cell Li-Ion battery charger and power-out module. Its USB-C interface provides 5 V from any compliant source, powering an on-board charger IC that supports charging currents of 250 mA, 750 mA, or 1 A. Two sets of screw-terminal outputs are available:
+This compact printed circuit board is designed to serve as a single-cell Li-Ion battery charger and power-out module. Its USB-C interface provides 5 V from any compliant source, powering an on-board charger IC that supports charging currents of 250 mA, 750 mA, or 1 A*. Two sets of terminals are available:
 
 * **Battery In:** for charging the battery safely.
 * **Battery Out:** for delivering battery voltage to a load even while the battery is charging.
 
+<b>*The charging current will depend on the battery charge percentage</b>
+
 <div align="center">
-<a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/top.png" width="500px"><br/> UNIT charger module</a>
+<a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png"></a>
 </div>
 
 ## Description 
@@ -17,8 +19,11 @@ The USB-C port accepts a 5 V supply from PCs, charger bricks, or power banks.
 
 ### Safety Features
 
-Integrated safety measures include over-voltage, over-current, and thermal shutdown protections. Additionally, a reverse-current diode prevents the battery from discharging back into the USB source when disconnected or inactive.
+Integrated safety measures include over-voltage, over-current protection up to 5A, and thermal shutdown.
 
+### Output Features
+
+Up to 3A output current from output terminals. The module can operate with currents above 3A with proper thermal management. Keep the module below 150°C to avoid permanent damage to the device.
 
 # Pinout
 <div align="center">
@@ -35,10 +40,12 @@ Integrated safety measures include over-voltage, over-current, and thermal shutd
 | Component         | PCB Label   | Description                                        |
 |-------------------|-------------|----------------------------------------------------|
 | USB-C Connector   | USB IN      | 5 V power input from USB-C source                  |
-| Connector         | Battery IN  | Screw terminals for connecting the Li-ion cell     |
-| Connector         | Battery Out | Screw terminals for outputting battery voltage     |
+| Connector         | Battery IN  | JST PH2.0 for connecting the Li-ion cell     |
+| Connector         | Battery Out | JST PH2.0 for outputting battery voltage     |
 | CHRG LED          | CHRG        | Indicator LED: on during the charging phase        |
 | DONE LED          | DONE        | Indicator LED: on when the charging cycle completes|
+| Solder Bridge     | 250 mA       | Sets charging current to 250 mA                |
+| Solder Bridge     | 750 mA       | Sets charging current to 750 mA; solder both bridges for 1 A |
 
 </div>
 
