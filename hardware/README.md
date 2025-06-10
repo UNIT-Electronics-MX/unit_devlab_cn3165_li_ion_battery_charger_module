@@ -15,6 +15,10 @@
 | CHRG LED          | CHRG        | Indicator LED: on during the charging phase         |
 | DONE LED          | DONE        | Indicator LED: on when the charging cycle completes |
 
+# Board Dimensions
+
+<a href="#"><img src="resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png" width="500px"><br/> Dimensions</a>
+
 # Board Topology
 
 <a href="#"><img src="resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png" width="500px"><br/> Topology</a>
