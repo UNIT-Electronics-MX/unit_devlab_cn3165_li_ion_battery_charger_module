@@ -1,14 +1,16 @@
 # Hardware
 
+<div align="center">
 
-<a href="#"><img src="UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf" width="500px"><br/> Schematics</a>
+<a href="UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf"><img src="resources/img/Schematics_icon.jpg" width="450px"><br/> Schematics</a>
 
-
-
+</div>
 
 # Pinout
 
-<a href="#"><img src="resources/charger_pinout.jpg" width="500px"><br/> Pinout</a>
+<div align="center">
+
+<a href="#"><img src="resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg" width="500px"><br/> Pinout</a>
 
 | Component         | PCB Label   | Description                                         |
 |-------------------|-----------  |---------------------------------------------------  |
@@ -17,3 +19,25 @@
 | Connector         | Battery Out | Screw terminals for outputting battery voltage      |
 | CHRG LED          | CHRG        | Indicator LED: on during the charging phase         |
 | DONE LED          | DONE        | Indicator LED: on when the charging cycle completes |
+
+</div>
+
+---
+
+# Dimensions
+
+<div align="center">
+    <a href="#"><img src="hardware/resources/charger_pinout.jpg" width="500px"><br/>Dimensions</a>
+    <br/>
+
+</div>
+
+---
+
+# Topology
+
+<div align="center">
+    <a href="#"><img src="hardware/resources/charger_pinout.jpg" width="500px"><br/>Topology</a>
+    <br/>
+
+</div>

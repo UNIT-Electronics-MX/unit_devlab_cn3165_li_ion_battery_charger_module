@@ -85,7 +85,7 @@ Works with:
 
 ## Downloads
 
-- [Schematic PDF](docs/schematic.pdf)
+- [Schematic PDF](../../hardware/UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf)
 
 
 
