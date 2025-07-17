@@ -6,7 +6,7 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 * **Battery Out:** for delivering battery voltage to a load even while the battery is charging.
 
 <div align="center">
-<a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/top.png" width="500px"><br/> UNIT charger module</a>
+<a href="#"><img src="hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png" width="500px"><br/> UNIT charger module</a>
 </div>
 
 ## Additional Resources
@@ -18,7 +18,7 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 | Wiki-UNIT Electronics | [Wiki - UNIT Electronics](https://unit-electronics-mx.github.io/wiki_uelectronics/es/docs/Modules/cn3165)                   |
 | Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_cn3165_battery_charger_module)                              |
 | Product Brief         | [Product brief]()                                                   |
-| Schematic             | [Schematic](hardware/UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf)                                                           |
+| Schematic             | [Schematic](hardware/unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf)                                                           |
 
 </div>
 
@@ -76,5 +76,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 # Resources
 
-- [Schematic PDF](./hardware/UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf)
+- [Schematic PDF](hardware/unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf)
 - [Product brief](./cn3165_battery_charger_module.pdf)
