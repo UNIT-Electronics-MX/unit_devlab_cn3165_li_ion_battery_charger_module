@@ -9,6 +9,9 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 <a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/top.png" width="500px"><br/> UNIT charger module</a>
 </div>
 
+
+
+
 ## Description 
 
 ### USB Power Input

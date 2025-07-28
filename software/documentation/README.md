@@ -100,7 +100,7 @@ Works with:
 
 ## Downloads
 
-- [Schematic PDF](docs/schematic.pdf)
+- [Schematic PDF](https://github.com/UNIT-Electronics-MX/unit_cn3165_battery_charger_module/tree/main/hardware)
 
 ## Purchase
 

@@ -1,7 +1,7 @@
 # Hardware
 
 
-<a href="#"><img src="UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf" width="500px"><br/> Schematics</a>
+<a href="UE0089-SCH-CN3165_Cargador_de_baterias-001-T.pdf"><img src="./resources/Schematics_icon.jpg" width="500px"><br/> Schematics</a>
 
 
 
