@@ -5,7 +5,7 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 * **Battery In:** for charging the battery safely.
 * **Battery Out:** for delivering battery voltage to a load even while the battery is charging.
 
-<b>*The charging current will depend on the battery charge percentage</b>
+> **Note:** *The charging current will depend on the battery charge percentage.*
 
 <div align="center">
 <a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png" width="400px"></a>
