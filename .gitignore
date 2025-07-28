@@ -1,0 +1,10 @@
+venv
+software/documentation/venv
+# Ignore Python virtual environments
+venv/
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
