@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<a href="unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf"><img src="resources/img/Schematics_icon.jpg" width="500px"><br/> Schematics</a>
+<a href="unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf"><img src="resources/img/Schematics_icon.jpg" width="300px"><br/> Schematics</a>
 
 </div>
 
