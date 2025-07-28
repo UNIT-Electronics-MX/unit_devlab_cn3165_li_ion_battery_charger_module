@@ -60,3 +60,18 @@
 | TP2   | Battery V+ Test Point                                                       |
 | TP3   | Charging LED Test Point                                                     |
 | TP4   | Charge Done LED Test Point                                                  |
+
+---
+
+## Additional Resources
+
+<div align="center">
+
+| Resource              | Link                                                                                                                        |
+|:---------------------:|:---------------------------------------------------------------------------------------------------------------------------:|
+| Wiki-UNIT Electronics | [Wiki - UNIT Electronics](https://unit-electronics-mx.github.io/wiki_uelectronics/es/docs/Modules/cn3165)                   |
+| Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_cn3165_battery_charger_module)                              |
+| Product Brief         | [Product brief](../docs/unit_cn3165_battery_charger_module_product_brief.pdf)                                                   |
+| Schematic             | [Schematic](unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf)                                                           |
+
+</div>
