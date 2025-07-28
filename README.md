@@ -7,10 +7,24 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 
 <b>*The charging current will depend on the battery charge percentage</b>
 
+
 <div align="center">
 <a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png"></a>
 </div>
 
+
+## Additional Resources
+
+<div align="center">
+
+| Resource              | Link                                                                                                                        |
+|:---------------------:|:---------------------------------------------------------------------------------------------------------------------------:|
+| Wiki-UNIT Electronics | [Wiki - UNIT Electronics](https://unit-electronics-mx.github.io/wiki_uelectronics/es/docs/Modules/cn3165)                   |
+| Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_cn3165_battery_charger_module)                              |
+| Product Brief         | [Product brief]()                                                   |
+| Schematic             | [Schematic](hardware/unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf)                                                           |
+
+</div>
 
 
 
