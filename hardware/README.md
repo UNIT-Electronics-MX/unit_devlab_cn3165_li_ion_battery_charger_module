@@ -1,11 +1,11 @@
 # Hardware
 
 
-<a href="./unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf"><img src="./resources/Schematics_icon.jpg" width="500px"><br/> Schematics</a>
+<a href="./unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf"><img src="./resources/img/Schematics_icon.jpg" width="500px"><br/> Schematics</a>
 
 # Pinout
 
-<a href="#"><img src="resources/charger_pinout.jpg" width="500px"><br/> Pinout</a>
+<a href="#"><img src="resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg" width="500px"><br/> Pinout</a>
 
 | Component         | PCB Label   | Description                                         |
 |-------------------|-----------  |---------------------------------------------------  |
