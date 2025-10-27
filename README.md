@@ -1,5 +1,4 @@
-# CN3165 Battery Charger Module
-
+# DevLab: CN3165 Li-Ion Battery Charger Module
 This compact printed circuit board is designed to serve as a single-cell Li-Ion battery charger and power-out module. Its USB-C interface provides 5 V from any compliant source, powering an on-board charger IC that supports charging currents of 250 mA, 750 mA, or 1 A*. Two sets of terminals are available:
 
 * **Battery In:** for charging the battery safely.
