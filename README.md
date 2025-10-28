@@ -34,7 +34,7 @@ The USB-C port accepts a 5 V supply from PCs, charger bricks, or power banks.
 
 ### Safety Features
 
-Integrated safety measures include over-voltage, over-current protection up to 5A, and thermal shutdown.
+Integrated safety measures include over-voltage, over-current protection up to 5A; over-discharge, short circuit and polarity protection; and thermal shutdown.
 
 ### Output Features
 

@@ -12,7 +12,7 @@
 
 <a href="#"><img src="resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg" width="500px"><br/> Pinout</a>
 
-</div>
+
 
 | Component         | PCB Label   | Description                                         |
 |-------------------|-----------  |---------------------------------------------------  |
@@ -21,14 +21,31 @@
 | Connector         | Battery Out | Screw terminals for outputting battery voltage      |
 | CHRG LED          | CHRG        | Indicator LED: on during the charging phase         |
 | DONE LED          | DONE        | Indicator LED: on when the charging cycle completes |
+</div>
 
-# Board Dimensions
+# Recommended Operating Conditions
 
-<a href="#"><img src="resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png" width="500px"><br/> Dimensions</a>
+<div align=center>
+
+| Symbol/Rail | Description                                          | Min  | Typ         | Max  | Unit |
+|-------------|------------------------------------------------------|------|-------------|------|------|
+|   V_IN      | USB-C input voltage                                  | 4.75 | 5.0         | 5.25 | V    |
+|   I_CHG     | Configurable charging current (set by resistor)      | 0.25 | 0.75        | 1.0  | A    |
+|   V_BATT    | Battery voltage during charge                        | -    | 4.2         | -    | V    |
+|   V_OCP     | Overcharge Protection Voltage                        | 4.25 | 4.3         | 4.35 | V    |
+|   V_OCR     | Overcharge Release Voltage                           | 4.05 | 4.10        | 4.15 | V    |
+|   I_BATT    | Battery discharge current (to load)                  | -    | 3.5         | 5    | A    |
+|   V_OUT     | Output voltage from “Battery Out” terminals          | 2.3  | V_BATT      | 4.2  | V    |
+|   V_ODR     | Overdischarge Release Voltage                        | 2.9  | 3.0         | 3.10 | V    |
+|   I_USB     | USB input current draw during charging               | -    | 0.75        | 1.2  | A    |
+|   T_TERM    | Charge termination threshold current                 | -    | 0.1 X I_CHG | -    | A    |  
+|   LED CHRG  | Charging status indicator (active LOW during charge) | -    | -           | -    | -    |
+|   LED DONE  | Charge complete indicator (active HIGH when full)    | -    | -           | -    | -    |
+</div>
 
 # Board Topology
 
-<a href="#"><img src="resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png" width="500px"><br/> Topology</a>
+<div align=center><a href="#"><img src="resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png" width="500px"><br/> Topology</a>
 
 | Ref.  | Description                                                                 |
 |-------|-----------------------------------------------------------------------------|
@@ -45,3 +62,9 @@
 | TP2   | Battery V+ Test Point                                                       |
 | TP3   | Charging LED Test Point                                                     |
 | TP4   | Charge Done LED Test Point                                                  |
+
+</div>
+
+# Board Dimensions
+
+<div align=center><a href="#"><img src="resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png" width="500px"><br/> Dimensions</a></div>
