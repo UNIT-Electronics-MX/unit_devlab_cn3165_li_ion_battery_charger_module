@@ -7,7 +7,7 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 > **Note:** *The charging current will depend on the battery charge percentage.*
 
 <div align="center">
-<a href="./cn3165_battery_charger_module.pdf"><img src="hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png" width="400px"></a>
+<a href="./hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png"><img src="hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png" width="400px"></a>
 </div>
 
 
@@ -40,8 +40,9 @@ Integrated safety measures include over-voltage, over-current protection up to 5
 
 Up to 3A output current from output terminals. The module can operate with currents above 3A with proper thermal management. Keep the module below 150°C to avoid permanent damage to the device.
 
+### Current Charge Configurable
 
-
+Select charging current using the designated solder bridges. The current can be configured to 250 mA, 750 mA, or 1000 mA.
 
 # License MIT 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

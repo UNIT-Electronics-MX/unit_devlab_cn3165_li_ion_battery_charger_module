@@ -23,6 +23,20 @@
 | DONE LED          | DONE        | Indicator LED: on when the charging cycle completes |
 </div>
 
+# Current Charge Configuration
+
+Select charging current using the designated solder bridges shown below:
+
+<div align="center">
+<a href="./unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf"><img src="./resources/unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG" width="400px"></a>
+</div>
+
+- Solder <b>only</b> 250 mA solder bridge to charge battery at 250 mA.
+
+- Solder <b>only</b> 750 mA solder bridge to charge battery at 750 mA.
+
+- Solder <b>both</b> bridges to charge battery at 1A.
+
 # Recommended Operating Conditions
 
 <div align=center>
