@@ -2,11 +2,7 @@ name: Copy Hardware Documentation
 
 on:
   push:
-    branches: [ main, develop ]
-    paths:
-      - 'hardware/**'
-  pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
     paths:
       - 'hardware/**'
   workflow_dispatch: # Permite ejecutar manualmente

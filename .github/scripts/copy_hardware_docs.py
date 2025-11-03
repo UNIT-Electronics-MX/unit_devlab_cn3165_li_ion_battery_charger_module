@@ -80,34 +80,29 @@ def copy_hardware_files():
 
 def scan_copied_files():
     """Escanear archivos copiados y generar estructura de datos"""
-    print(" Escaneando archivos copiados...")
+    print("📁 Escaneando archivos copiados...")
     
-    file_structure = {}
+    file_structure = {'files': [], 'folders': {}}
     
     for root, dirs, files in os.walk(DOCS_HARDWARE_DIR):
         root_path = Path(root)
         relative_path = root_path.relative_to(DOCS_HARDWARE_DIR)
         
-        # Crear estructura de carpetas
-        current_dict = file_structure
-        for part in relative_path.parts:
-            if part not in current_dict:
-                current_dict[part] = {'files': [], 'folders': {}}
-            current_dict = current_dict[part]['folders']
-        
-        # Si estamos en el directorio raíz
+        # Determinar el diccionario objetivo
         if str(relative_path) == '.':
+            # Directorio raíz
             target_dict = file_structure
         else:
-            # Navegar a la ubicación correcta
+            # Navegar/crear la estructura de directorios
             target_dict = file_structure
-            for part in relative_path.parts[:-1]:
-                target_dict = target_dict[part]['folders']
-            if relative_path.parts[-1] not in target_dict:
-                target_dict[relative_path.parts[-1]] = {'files': [], 'folders': {}}
-            target_dict = target_dict[relative_path.parts[-1]]
+            for part in relative_path.parts:
+                if 'folders' not in target_dict:
+                    target_dict['folders'] = {}
+                if part not in target_dict['folders']:
+                    target_dict['folders'][part] = {'files': [], 'folders': {}}
+                target_dict = target_dict['folders'][part]
         
-        # Agregar archivos
+        # Agregar archivos al directorio actual
         if 'files' not in target_dict:
             target_dict['files'] = []
             
@@ -325,100 +320,97 @@ def generate_html_page(file_structure):
         """Renderizar árbol de archivos"""
         html = ""
         
-        # Renderizar carpetas
-        for folder_name, folder_data in structure.items():
-            if folder_name == 'files':
-                continue
+        # Renderizar archivos del nivel actual primero
+        if 'files' in structure and structure['files']:
+            for file_info in structure['files']:
+                icon_class = get_file_icon(file_info['type'], file_info['extension'])
+                type_color = {
+                    'image': 'success',
+                    'document': 'primary',
+                    'data': 'info',
+                    'other': 'secondary'
+                }.get(file_info['type'], 'secondary')
                 
-            folder_path = f"{path_prefix}/{folder_name}" if path_prefix else folder_name
-            folder_id = folder_path.replace('/', '_').replace(' ', '_')
-            
-            html += f'''
-            <div class="tree-item">
-                <div class="d-flex align-items-center file-item" style="cursor: pointer;" onclick="toggleFolder(this)">
-                    <i class="bi bi-chevron-down folder-toggle"></i>
-                    <i class="bi bi-folder-fill folder-icon file-icon"></i>
-                    <strong>{folder_name}</strong>
-                </div>
-                <div id="{folder_id}" class="ms-3">
-            '''
-            
-            # Renderizar archivos de la carpeta
-            if 'files' in folder_data and folder_data['files']:
-                for file_info in folder_data['files']:
-                    icon_class = get_file_icon(file_info['type'], file_info['extension'])
-                    type_color = {
-                        'image': 'success',
-                        'document': 'primary',
-                        'data': 'info',
-                        'other': 'secondary'
-                    }.get(file_info['type'], 'secondary')
-                    
-                    file_link = f"hardware/{file_info['path'].replace('hardware/', '')}"
-                    
-                    # Configurar enlaces según el tipo de archivo
-                    if file_info['type'] == 'image':
-                        # Imágenes: preview modal + enlace directo
-                        click_action = f"previewImage('{file_link}', '{file_info['name']}')"
-                        link_attrs = f'style="cursor: pointer;" onclick="{click_action}" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open(\'{file_link}\', \'_blank\'); return false;"'
-                    elif file_info['extension'].lower() == '.pdf':
-                        # PDFs: abrir en nueva pestaña con viewer integrado
-                        link_attrs = f'href="{file_link}" target="_blank" title="Abrir PDF en nueva pestaña"'
-                    else:
-                        # Otros archivos: abrir en nueva pestaña
-                        link_attrs = f'href="{file_link}" target="_blank" title="Abrir archivo en nueva pestaña"'
-                    
-                    # Agregar botones adicionales para PDFs
-                    extra_buttons = ""
-                    if file_info['extension'].lower() == '.pdf':
-                        extra_buttons = f'''
-                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
-                            <button onclick="previewPDF('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa PDF">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir PDF en nueva pestaña">
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                            <a href="{file_link}" download class="btn btn-outline-secondary btn-sm" title="Descargar PDF">
-                                <i class="bi bi-download"></i>
-                            </a>
-                        </div>
-                        '''
-                    elif file_info['type'] == 'image':
-                        extra_buttons = f'''
-                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
-                            <button onclick="previewImage('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                        </div>
-                        '''
-                    
-                    html += f'''
-                    <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center flex-grow-1">
-                            <i class="bi {icon_class} file-icon"></i>
-                            <a {link_attrs} class="text-decoration-none me-2 flex-grow-1">{file_info['name']}</a>
-                            <span class="badge bg-{type_color} type-badge me-2">{file_info['type']}</span>
-                            {extra_buttons}
-                        </div>
-                        <div class="text-end ms-3">
-                            <small class="file-size d-block">{file_info['size_human']}</small>
-                            <small class="file-date">{file_info['modified']}</small>
-                        </div>
+                file_link = f"hardware/{file_info['path'].replace('hardware/', '')}"
+                
+                # Configurar enlaces según el tipo de archivo
+                if file_info['type'] == 'image':
+                    # Imágenes: preview modal + enlace directo
+                    click_action = f"previewImage('{file_link}', '{file_info['name']}')"
+                    link_attrs = f'style="cursor: pointer;" onclick="{click_action}" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open(\'{file_link}\', \'_blank\'); return false;"'
+                elif file_info['extension'].lower() == '.pdf':
+                    # PDFs: abrir en nueva pestaña con viewer integrado
+                    link_attrs = f'href="{file_link}" target="_blank" title="Abrir PDF en nueva pestaña"'
+                else:
+                    # Otros archivos: abrir en nueva pestaña
+                    link_attrs = f'href="{file_link}" target="_blank" title="Abrir archivo en nueva pestaña"'
+                
+                # Agregar botones adicionales para PDFs
+                extra_buttons = ""
+                if file_info['extension'].lower() == '.pdf':
+                    extra_buttons = f'''
+                    <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                        <button onclick="previewPDF('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa PDF">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir PDF en nueva pestaña">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                        <a href="{file_link}" download class="btn btn-outline-secondary btn-sm" title="Descargar PDF">
+                            <i class="bi bi-download"></i>
+                        </a>
                     </div>
                     '''
-            
-            # Renderizar subcarpetas recursivamente
-            if 'folders' in folder_data:
-                html += render_tree(folder_data['folders'], folder_path)
-            
-            html += '''
+                elif file_info['type'] == 'image':
+                    extra_buttons = f'''
+                    <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                        <button onclick="previewImage('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                    </div>
+                    '''
+                
+                html += f'''
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi {icon_class} file-icon"></i>
+                        <a {link_attrs} class="text-decoration-none me-2 flex-grow-1">{file_info['name']}</a>
+                        <span class="badge bg-{type_color} type-badge me-2">{file_info['type']}</span>
+                        {extra_buttons}
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">{file_info['size_human']}</small>
+                        <small class="file-date">{file_info['modified']}</small>
+                    </div>
                 </div>
-            </div>
-            '''
+                '''
+        
+        # Renderizar carpetas
+        if 'folders' in structure:
+            for folder_name, folder_data in structure['folders'].items():
+                folder_path = f"{path_prefix}/{folder_name}" if path_prefix else folder_name
+                folder_id = folder_path.replace('/', '_').replace(' ', '_')
+                
+                html += f'''
+                <div class="tree-item">
+                    <div class="d-flex align-items-center file-item" style="cursor: pointer;" onclick="toggleFolder(this)">
+                        <i class="bi bi-chevron-down folder-toggle"></i>
+                        <i class="bi bi-folder-fill folder-icon file-icon"></i>
+                        <strong>{folder_name}</strong>
+                    </div>
+                    <div id="{folder_id}" class="ms-3">
+                '''
+                
+                # Renderizar subcarpetas recursivamente
+                html += render_tree(folder_data, folder_path)
+                
+                html += '''
+                    </div>
+                </div>
+                '''
         
         return html
 
@@ -427,25 +419,20 @@ def generate_html_page(file_structure):
         stats = {'total_files': 0, 'images': 0, 'documents': 0, 'total_size_bytes': 0}
         
         def count_recursive(struct):
-            for key, value in struct.items():
-                if key == 'files':
-                    for file_info in value:
-                        stats['total_files'] += 1
-                        stats['total_size_bytes'] += file_info['size']
-                        if file_info['type'] == 'image':
-                            stats['images'] += 1
-                        elif file_info['type'] == 'document':
-                            stats['documents'] += 1
-                elif isinstance(value, dict) and 'folders' in value:
-                    count_recursive(value['folders'])
-                    if 'files' in value:
-                        for file_info in value['files']:
-                            stats['total_files'] += 1
-                            stats['total_size_bytes'] += file_info['size']
-                            if file_info['type'] == 'image':
-                                stats['images'] += 1
-                            elif file_info['type'] == 'document':
-                                stats['documents'] += 1
+            # Contar archivos del nivel actual
+            if 'files' in struct:
+                for file_info in struct['files']:
+                    stats['total_files'] += 1
+                    stats['total_size_bytes'] += file_info['size']
+                    if file_info['type'] == 'image':
+                        stats['images'] += 1
+                    elif file_info['type'] == 'document':
+                        stats['documents'] += 1
+            
+            # Recursar en subcarpetas
+            if 'folders' in struct:
+                for folder_name, folder_data in struct['folders'].items():
+                    count_recursive(folder_data)
         
         count_recursive(structure)
         stats['total_size'] = format_size(stats['total_size_bytes'])
