@@ -6,6 +6,8 @@
 
 </div>
 
+> **Documentation Status**: Auto-updated via GitHub Actions workflow
+
 # Pinout
 
 <div align="center">
