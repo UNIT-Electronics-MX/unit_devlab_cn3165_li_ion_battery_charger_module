@@ -10,8 +10,8 @@
     <style>
         .file-icon { margin-right: 8px; }
         .folder-icon { color: #ffc107; }
-        .file-item { margin: 4px 0; padding: 8px; border-radius: 4px; }
-        .file-item:hover { background-color: #f8f9fa; }
+        .file-item { margin: 4px 0; padding: 8px; border-radius: 4px; transition: all 0.2s ease; }
+        .file-item:hover { background-color: #f8f9fa; transform: translateX(5px); }
         .file-size { color: #6c757d; font-size: 0.9em; }
         .file-date { color: #6c757d; font-size: 0.85em; }
         .breadcrumb { background-color: #e9ecef; }
@@ -19,6 +19,12 @@
         .tree-item { margin-left: 20px; }
         .stats-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
         .type-badge { font-size: 0.75em; }
+        .btn-group .btn { border-radius: 3px !important; }
+        .file-actions { opacity: 0; transition: opacity 0.2s ease; }
+        .file-item:hover .file-actions { opacity: 1; }
+        .pdf-viewer { width: 100%; height: 600px; border: none; }
+        .file-link { text-decoration: none !important; color: #495057; }
+        .file-link:hover { color: #007bff; }
     </style>
 </head>
 <body>
@@ -29,7 +35,7 @@
                 CN3165 Battery Charger Module - Hardware Documentation
             </span>
             <span class="navbar-text">
-                Generado: 2025-11-03 17:21:33
+                Generado: 2025-11-03 17:58:50
             </span>
         </div>
     </nav>
@@ -82,134 +88,244 @@
                 <div id="resources" class="ms-3">
             
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/charger_module.jpg', 'charger_module.jpg')" class="text-decoration-none me-2">charger_module.jpg</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/charger_module.jpg', 'charger_module.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/charger_module.jpg', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">charger_module.jpg</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/charger_module.jpg', 'charger_module.jpg')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/charger_module.jpg" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">191.4 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG', 'unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG')" class="text-decoration-none me-2">unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG', 'unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG', 'unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_product_solderpads_v_0_0_1_ue0089_cn3165_battery_charger.PNG" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">52.7 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg', 'unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg')" class="text-decoration-none me-2">unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg', 'unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg', 'unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.jpg" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">7.0 MB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.png', 'unit_pinout_v_0_0_1_ue0089_battery_charger_es.png')" class="text-decoration-none me-2">unit_pinout_v_0_0_1_ue0089_battery_charger_es.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.png', 'unit_pinout_v_0_0_1_ue0089_battery_charger_es.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_pinout_v_0_0_1_ue0089_battery_charger_es.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.png', 'unit_pinout_v_0_0_1_ue0089_battery_charger_es.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_es.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">1.8 MB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="text-decoration-none me-2">unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_dimensions_v_0_0_1_ue0089_cn3165_battery_charger.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">43.8 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.png', 'unit_pinout_v_0_0_1_ue0089_battery_charger_en.png')" class="text-decoration-none me-2">unit_pinout_v_0_0_1_ue0089_battery_charger_en.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.png', 'unit_pinout_v_0_0_1_ue0089_battery_charger_en.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_pinout_v_0_0_1_ue0089_battery_charger_en.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.png', 'unit_pinout_v_0_0_1_ue0089_battery_charger_en.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">1.8 MB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="text-decoration-none me-2">unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_product_top_v_0_0_1_ue0089_cn3165_battery_charger.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">233.8 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="text-decoration-none me-2">unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">202.0 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg', 'unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg')" class="text-decoration-none me-2">unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg', 'unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg', 'unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_pinout_v_0_0_1_ue0089_battery_charger_en.jpg" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">6.9 MB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg', 'unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg')" class="text-decoration-none me-2">unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg', 'unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg', 'unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_product_btm_v_0_0_1_ue0089_cn3165_battery_charger.jpg" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">676.7 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="text-decoration-none me-2">unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png', 'unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/unit_topology_v_0_0_1_ue0089_cn3165_battery_charger.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">189.9 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
@@ -222,38 +338,68 @@
                 <div id="resources_img" class="ms-3">
             
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/3D_BOTTOM.png', '3D_BOTTOM.png')" class="text-decoration-none me-2">3D_BOTTOM.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/3D_BOTTOM.png', '3D_BOTTOM.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/img/3D_BOTTOM.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">3D_BOTTOM.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/img/3D_BOTTOM.png', '3D_BOTTOM.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/img/3D_BOTTOM.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">77.8 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/3D_TOP.png', '3D_TOP.png')" class="text-decoration-none me-2">3D_TOP.png</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/3D_TOP.png', '3D_TOP.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/img/3D_TOP.png', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">3D_TOP.png</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/img/3D_TOP.png', '3D_TOP.png')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/img/3D_TOP.png" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">182.1 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi bi-file-earmark-image file-icon"></i>
-                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/Schematics_icon.jpg', 'Schematics_icon.jpg')" class="text-decoration-none me-2">Schematics_icon.jpg</a>
-                            <span class="badge bg-success type-badge">image</span>
+                            <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/Schematics_icon.jpg', 'Schematics_icon.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/img/Schematics_icon.jpg', '_blank'); return false;" class="text-decoration-none me-2 flex-grow-1">Schematics_icon.jpg</a>
+                            <span class="badge bg-success type-badge me-2">image</span>
+                            
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('hardware/resources/img/Schematics_icon.jpg', 'Schematics_icon.jpg')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="hardware/resources/img/Schematics_icon.jpg" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
                         </div>
-                        <div class="text-end">
+                        
+                        </div>
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">142.0 KB</small>
-                            <small class="file-date">2025-11-03 17:21:21</small>
+                            <small class="file-date">2025-11-03 17:58:37</small>
                         </div>
                     </div>
                     
@@ -274,11 +420,39 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">Vista Previa</h5>
+                    <h5 class="modal-title" id="imageModalLabel">Vista Previa de Imagen</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
                     <img id="modalImage" src="" alt="Vista previa" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <a id="imageDirectLink" href="" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir en nueva pestaña
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para previsualizar PDFs -->
+    <div class="modal fade" id="pdfModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pdfModalLabel">Vista Previa de PDF</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="pdfViewer" class="pdf-viewer" src=""></iframe>
+                </div>
+                <div class="modal-footer">
+                    <a id="pdfDirectLink" href="" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir en nueva pestaña
+                    </a>
+                    <a id="pdfDownloadLink" href="" download class="btn btn-secondary">
+                        <i class="bi bi-download"></i> Descargar
+                    </a>
                 </div>
             </div>
         </div>
@@ -290,7 +464,17 @@
         function previewImage(src, title) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModalLabel').textContent = title;
+            document.getElementById('imageDirectLink').href = src;
             new bootstrap.Modal(document.getElementById('imageModal')).show();
+        }
+
+        // Función para mostrar vista previa de PDFs
+        function previewPDF(src, title) {
+            document.getElementById('pdfViewer').src = src;
+            document.getElementById('pdfModalLabel').textContent = title;
+            document.getElementById('pdfDirectLink').href = src;
+            document.getElementById('pdfDownloadLink').href = src;
+            new bootstrap.Modal(document.getElementById('pdfModal')).show();
         }
 
         // Función para alternar carpetas
@@ -308,6 +492,23 @@
                 icon.classList.add('bi-chevron-right');
             }
         }
+
+        // Función para abrir archivo en nueva pestaña
+        function openInNewTab(url) {
+            window.open(url, '_blank');
+        }
+
+        // Manejar clicks con Ctrl para abrir en nueva pestaña
+        document.addEventListener('click', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                const link = e.target.closest('a[onclick*="previewImage"]');
+                if (link) {
+                    e.preventDefault();
+                    const src = link.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    window.open(src, '_blank');
+                }
+            }
+        });
     </script>
 </body>
 </html>
