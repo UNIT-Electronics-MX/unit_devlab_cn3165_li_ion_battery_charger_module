@@ -1,0 +1,43 @@
+name: Copy Hardware Documentation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'hardware/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'hardware/**'
+  workflow_dispatch: # Permite ejecutar manualmente
+
+jobs:
+  copy-hardware-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install Jinja2
+        
+    - name: Copy hardware files and generate HTML
+      run: |
+        chmod +x .github/scripts/build_docs.sh
+        .github/scripts/build_docs.sh
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add docs/hardware/ docs/index.html
+        git diff --staged --quiet || git commit -m "Auto-update hardware documentation"
+        git push
