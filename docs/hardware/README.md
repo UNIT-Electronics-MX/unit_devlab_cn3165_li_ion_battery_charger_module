@@ -6,7 +6,8 @@
 
 </div>
 
-> **Documentation Status**: Auto-updated via GitHub Actions workflow
+> **Documentation Status**: Auto-updated via GitHub Actions workflow  
+> **Last Updated**: Enhanced with PDF preview and improved navigation
 
 # Pinout
 
