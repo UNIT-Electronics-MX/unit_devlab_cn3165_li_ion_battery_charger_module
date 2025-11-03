@@ -135,8 +135,8 @@ def generate_html_page(file_structure):
     <style>
         .file-icon { margin-right: 8px; }
         .folder-icon { color: #ffc107; }
-        .file-item { margin: 4px 0; padding: 8px; border-radius: 4px; }
-        .file-item:hover { background-color: #f8f9fa; }
+        .file-item { margin: 4px 0; padding: 8px; border-radius: 4px; transition: all 0.2s ease; }
+        .file-item:hover { background-color: #f8f9fa; transform: translateX(5px); }
         .file-size { color: #6c757d; font-size: 0.9em; }
         .file-date { color: #6c757d; font-size: 0.85em; }
         .breadcrumb { background-color: #e9ecef; }
@@ -144,6 +144,12 @@ def generate_html_page(file_structure):
         .tree-item { margin-left: 20px; }
         .stats-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
         .type-badge { font-size: 0.75em; }
+        .btn-group .btn { border-radius: 3px !important; }
+        .file-actions { opacity: 0; transition: opacity 0.2s ease; }
+        .file-item:hover .file-actions { opacity: 1; }
+        .pdf-viewer { width: 100%; height: 600px; border: none; }
+        .file-link { text-decoration: none !important; color: #495057; }
+        .file-link:hover { color: #007bff; }
     </style>
 </head>
 <body>
@@ -209,11 +215,39 @@ def generate_html_page(file_structure):
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">Vista Previa</h5>
+                    <h5 class="modal-title" id="imageModalLabel">Vista Previa de Imagen</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
                     <img id="modalImage" src="" alt="Vista previa" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <a id="imageDirectLink" href="" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir en nueva pestaña
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para previsualizar PDFs -->
+    <div class="modal fade" id="pdfModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pdfModalLabel">Vista Previa de PDF</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="pdfViewer" class="pdf-viewer" src=""></iframe>
+                </div>
+                <div class="modal-footer">
+                    <a id="pdfDirectLink" href="" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir en nueva pestaña
+                    </a>
+                    <a id="pdfDownloadLink" href="" download class="btn btn-secondary">
+                        <i class="bi bi-download"></i> Descargar
+                    </a>
                 </div>
             </div>
         </div>
@@ -225,7 +259,17 @@ def generate_html_page(file_structure):
         function previewImage(src, title) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModalLabel').textContent = title;
+            document.getElementById('imageDirectLink').href = src;
             new bootstrap.Modal(document.getElementById('imageModal')).show();
+        }
+
+        // Función para mostrar vista previa de PDFs
+        function previewPDF(src, title) {
+            document.getElementById('pdfViewer').src = src;
+            document.getElementById('pdfModalLabel').textContent = title;
+            document.getElementById('pdfDirectLink').href = src;
+            document.getElementById('pdfDownloadLink').href = src;
+            new bootstrap.Modal(document.getElementById('pdfModal')).show();
         }
 
         // Función para alternar carpetas
@@ -243,6 +287,23 @@ def generate_html_page(file_structure):
                 icon.classList.add('bi-chevron-right');
             }
         }
+
+        // Función para abrir archivo en nueva pestaña
+        function openInNewTab(url) {
+            window.open(url, '_blank');
+        }
+
+        // Manejar clicks con Ctrl para abrir en nueva pestaña
+        document.addEventListener('click', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                const link = e.target.closest('a[onclick*="previewImage"]');
+                if (link) {
+                    e.preventDefault();
+                    const src = link.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    window.open(src, '_blank');
+                }
+            }
+        });
     </script>
 </body>
 </html>
@@ -295,20 +356,55 @@ def generate_html_page(file_structure):
                     
                     file_link = f"hardware/{file_info['path'].replace('hardware/', '')}"
                     
+                    # Configurar enlaces según el tipo de archivo
                     if file_info['type'] == 'image':
+                        # Imágenes: preview modal + enlace directo
                         click_action = f"previewImage('{file_link}', '{file_info['name']}')"
-                        link_attrs = f'style="cursor: pointer;" onclick="{click_action}"'
+                        link_attrs = f'style="cursor: pointer;" onclick="{click_action}" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open(\'{file_link}\', \'_blank\'); return false;"'
+                    elif file_info['extension'].lower() == '.pdf':
+                        # PDFs: abrir en nueva pestaña con viewer integrado
+                        link_attrs = f'href="{file_link}" target="_blank" title="Abrir PDF en nueva pestaña"'
                     else:
-                        link_attrs = f'href="{file_link}" target="_blank"'
+                        # Otros archivos: abrir en nueva pestaña
+                        link_attrs = f'href="{file_link}" target="_blank" title="Abrir archivo en nueva pestaña"'
+                    
+                    # Agregar botones adicionales para PDFs
+                    extra_buttons = ""
+                    if file_info['extension'].lower() == '.pdf':
+                        extra_buttons = f'''
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewPDF('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa PDF">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir PDF en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                            <a href="{file_link}" download class="btn btn-outline-secondary btn-sm" title="Descargar PDF">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
+                        '''
+                    elif file_info['type'] == 'image':
+                        extra_buttons = f'''
+                        <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
+                            <button onclick="previewImage('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        '''
                     
                     html += f'''
                     <div class="d-flex align-items-center justify-content-between file-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
                             <i class="bi {icon_class} file-icon"></i>
-                            <a {link_attrs} class="text-decoration-none me-2">{file_info['name']}</a>
-                            <span class="badge bg-{type_color} type-badge">{file_info['type']}</span>
+                            <a {link_attrs} class="text-decoration-none me-2 flex-grow-1">{file_info['name']}</a>
+                            <span class="badge bg-{type_color} type-badge me-2">{file_info['type']}</span>
+                            {extra_buttons}
                         </div>
-                        <div class="text-end">
+                        <div class="text-end ms-3">
                             <small class="file-size d-block">{file_info['size_human']}</small>
                             <small class="file-date">{file_info['modified']}</small>
                         </div>
