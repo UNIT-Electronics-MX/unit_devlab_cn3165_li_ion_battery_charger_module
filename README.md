@@ -11,19 +11,17 @@ This compact printed circuit board is designed to serve as a single-cell Li-Ion 
 </div>
 
 
-## Additional Resources
-
 <div align="center">
 
-| Resource              | Link                                                                                                                        |
-|:---------------------:|:---------------------------------------------------------------------------------------------------------------------------:|
-| Wiki-UNIT Electronics | [Wiki - UNIT Electronics](https://unit-electronics-mx.github.io/wiki_uelectronics/es/docs/Modules/cn3165)                   |
-| Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_cn3165_battery_charger_module)                              |
-| Product Brief         | [Product brief]()                                                   |
-| Schematic             | [Schematic](hardware/unit_sch_v_0_0_1_ue0089_cn3165_battery_charger.pdf)                                                           |
+### Quick Setup
+
+
+[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](#)
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](https://unit-electronics-mx.github.io/unit_devlab_cn3165_li_ion_battery_charger_module/hardware/DevLab%20CN3165%20Li-Ion%20Battery%20Charger%20Module.docx.pdf)
+[<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
+[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](#)
 
 </div>
-
 
 
 ## Description 

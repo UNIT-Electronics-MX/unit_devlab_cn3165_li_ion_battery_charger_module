@@ -128,30 +128,33 @@ def generate_html_page(file_structure):
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+        body { font-family: Arial, sans-serif; background-color: #ffffff; }
         .file-icon { margin-right: 8px; }
-        .folder-icon { color: #ffc107; }
-        .file-item { margin: 4px 0; padding: 8px; border-radius: 4px; transition: all 0.2s ease; }
-        .file-item:hover { background-color: #f8f9fa; transform: translateX(5px); }
-        .file-size { color: #6c757d; font-size: 0.9em; }
-        .file-date { color: #6c757d; font-size: 0.85em; }
-        .breadcrumb { background-color: #e9ecef; }
+        .folder-icon { color: #666666; }
+        .file-item { margin: 2px 0; padding: 6px; border-bottom: 1px solid #e0e0e0; }
+        .file-item:hover { background-color: #f5f5f5; }
+        .file-size { color: #666666; font-size: 0.9em; }
+        .file-date { color: #666666; font-size: 0.85em; }
         .preview-modal img { max-width: 100%; height: auto; }
         .tree-item { margin-left: 20px; }
-        .stats-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .stats-card { background-color: #f8f9fa; color: #333333; border: 1px solid #dee2e6; }
         .type-badge { font-size: 0.75em; }
-        .btn-group .btn { border-radius: 3px !important; }
-        .file-actions { opacity: 0; transition: opacity 0.2s ease; }
-        .file-item:hover .file-actions { opacity: 1; }
         .pdf-viewer { width: 100%; height: 600px; border: none; }
-        .file-link { text-decoration: none !important; color: #495057; }
-        .file-link:hover { color: #007bff; }
+        .file-link { text-decoration: none; color: #333333; }
+        .file-link:hover { color: #0066cc; }
+        .navbar { background-color: #ffffff !important; border-bottom: 1px solid #dee2e6; }
+        .navbar-brand { color: #333333 !important; }
+        .navbar-text { color: #666666 !important; }
+        .card { border: 1px solid #dee2e6; box-shadow: none; }
+        .card-header { background-color: #f8f9fa; border-bottom: 1px solid #dee2e6; }
+        .btn { border-radius: 3px; }
+        h1, h2, h3, h4, h5 { color: #333333; }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">
-                <i class="bi bi-cpu"></i>
                 CN3165 Battery Charger Module - Hardware Documentation
             </span>
             <span class="navbar-text">
@@ -163,24 +166,23 @@ def generate_html_page(file_structure):
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12">
-                <div class="card stats-card mb-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Resumen de Archivos</h5>
+                    </div>
                     <div class="card-body">
-                        <div class="row text-center">
+                        <div class="row">
                             <div class="col-md-3">
-                                <h3>{{ stats.total_files }}</h3>
-                                <p class="mb-0">Total de Archivos</p>
+                                <strong>Total de Archivos:</strong> {{ stats.total_files }}
                             </div>
                             <div class="col-md-3">
-                                <h3>{{ stats.images }}</h3>
-                                <p class="mb-0">Imágenes</p>
+                                <strong>Imágenes:</strong> {{ stats.images }}
                             </div>
                             <div class="col-md-3">
-                                <h3>{{ stats.documents }}</h3>
-                                <p class="mb-0">Documentos</p>
+                                <strong>Documentos:</strong> {{ stats.documents }}
                             </div>
                             <div class="col-md-3">
-                                <h3>{{ stats.total_size }}</h3>
-                                <p class="mb-0">Tamaño Total</p>
+                                <strong>Tamaño Total:</strong> {{ stats.total_size }}
                             </div>
                         </div>
                     </div>
@@ -193,8 +195,7 @@ def generate_html_page(file_structure):
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title mb-0">
-                            <i class="bi bi-folder-fill folder-icon"></i>
-                            Estructura de Archivos
+                            Archivos de Hardware
                         </h5>
                     </div>
                     <div class="card-body">
@@ -345,41 +346,31 @@ def generate_html_page(file_structure):
                     # Otros archivos: abrir en nueva pestaña
                     link_attrs = f'href="{file_link}" target="_blank" title="Abrir archivo en nueva pestaña"'
                 
-                # Agregar botones adicionales para PDFs
-                extra_buttons = ""
+                # Agregar enlaces simples según tipo de archivo
+                extra_links = ""
                 if file_info['extension'].lower() == '.pdf':
-                    extra_buttons = f'''
-                    <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
-                        <button onclick="previewPDF('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa PDF">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                        <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir PDF en nueva pestaña">
-                            <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                        <a href="{file_link}" download class="btn btn-outline-secondary btn-sm" title="Descargar PDF">
-                            <i class="bi bi-download"></i>
-                        </a>
-                    </div>
+                    extra_links = f'''
+                    <small class="ms-2">
+                        <a href="#" onclick="previewPDF('{file_link}', '{file_info['name']}')" title="Vista previa">ver</a> |
+                        <a href="{file_link}" target="_blank" title="Abrir en nueva pestaña">abrir</a> |
+                        <a href="{file_link}" download title="Descargar">descargar</a>
+                    </small>
                     '''
                 elif file_info['type'] == 'image':
-                    extra_buttons = f'''
-                    <div class="btn-group btn-group-sm ms-2 file-actions" role="group">
-                        <button onclick="previewImage('{file_link}', '{file_info['name']}')" class="btn btn-outline-success btn-sm" title="Vista previa de imagen">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                        <a href="{file_link}" target="_blank" class="btn btn-outline-primary btn-sm" title="Abrir imagen en nueva pestaña">
-                            <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                    </div>
+                    extra_links = f'''
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('{file_link}', '{file_info['name']}')" title="Vista previa">ver</a> |
+                        <a href="{file_link}" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
                     '''
                 
                 html += f'''
                 <div class="d-flex align-items-center justify-content-between file-item">
                     <div class="d-flex align-items-center flex-grow-1">
                         <i class="bi {icon_class} file-icon"></i>
-                        <a {link_attrs} class="text-decoration-none me-2 flex-grow-1">{file_info['name']}</a>
+                        <a {link_attrs} class="file-link me-2">{file_info['name']}</a>
                         <span class="badge bg-{type_color} type-badge me-2">{file_info['type']}</span>
-                        {extra_buttons}
+                        {extra_links}
                     </div>
                     <div class="text-end ms-3">
                         <small class="file-size d-block">{file_info['size_human']}</small>
